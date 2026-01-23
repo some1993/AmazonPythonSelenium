@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+.venv/
+venv/
+
+# IDE
+.idea/
+
+# OS
+.DS_Store
+
+# Selenium
+*.log
+screenshots/
+allure-results/
