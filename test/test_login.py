@@ -27,7 +27,7 @@ class TestAmazonOrder:
         login = LoginPage(driver)
 
         with allure.step("Login with valid credentials"):
-            status = login.login("g.sheakher@gmail.com", "Somearti@1993")
+            status = login.login("shekr@gmail.com", "Some@1990")
             assert status == "LOGIN_SUCCESS"
 
         with allure.step("Search for product"):
