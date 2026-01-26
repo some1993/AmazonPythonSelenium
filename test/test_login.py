@@ -3,6 +3,7 @@ import pytest
 from pageObjects.login import LoginPage
 from pageObjects.search_product_page import SearchProductPage
 from pageObjects.add_to_cart import AddToCart
+from pageObjects.secure_checkoutPage import Secure_CheckoutPage
 from pageObjects.shop_cart import ShopCartPage
 
 
@@ -51,4 +52,13 @@ class TestAmazonOrder:
         with allure.step("Check if product in cart more than 2"):
             count_product = ShopCartPage(driver)
             count_product.shopCart()
+            count_product.get_item_details()
+
+        with allure.step("When on Secure Checkout Page"):
+            checkout = Secure_CheckoutPage(driver)
+            checkout.get_CustomerDetails()
+            checkout.add_delivery_instruction()
+
+
+
 

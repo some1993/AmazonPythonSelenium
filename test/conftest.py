@@ -19,6 +19,7 @@ def pytest_addoption(parser):
 
 @pytest.fixture(scope="function")
 def browserInstance(request):
+    global driver
     browser_name = request.config.getoption("--browser_name")
     service_obj = Service()
 
@@ -31,6 +32,7 @@ def browserInstance(request):
     driver.maximize_window()
 
     yield driver
+
 
     try:
         wait = WebDriverWait(driver, 10)

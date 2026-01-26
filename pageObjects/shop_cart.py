@@ -1,8 +1,7 @@
 import time
+import pyperclip
 
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.expected_conditions import element_to_be_clickable
-from selenium.webdriver.support.wait import WebDriverWait
 
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -13,7 +12,14 @@ class ShopCartPage:
         self.wait = WebDriverWait(driver, 10)
         self.get_no_items = (By.XPATH, "//span[@data-a-selector='inner-value']")
         self.decrease_quantity = (By.XPATH, "//button[@aria-label='Decrease quantity by one']")
-        self.proceed_to_cart = (By.XPATH, "//input[@name='proceedToRetailCheckout']")
+
+        self.colour = (By.XPATH, "//span[normalize-space()='Cosmic Orange']")
+        self.size = (By.XPATH, "//span[normalize-space()='256 GB']")
+
+        self.click_share = (By.XPATH, "//a[normalize-space()='Share']")
+        self.share_link_input = (By.XPATH, "//input[@aria-label='Copy Link']")
+        # self.close_sharePopUp = (By.XPATH, "//button[@aria-label='Close']")
+        self.proceed_to_cart = (By.NAME, "proceedToRetailCheckout")
 
     def shopCart(self):
         while True:
@@ -28,7 +34,22 @@ class ShopCartPage:
                 EC.element_to_be_clickable(self.decrease_quantity)
             )
             decrease_btn.click()
+
+    def get_item_details(self):
+        print("Colour:", self.wait.until(EC.visibility_of_element_located(self.colour)).text)
+        print("Size:", self.wait.until(EC.visibility_of_element_located(self.size)).text)
+
+        self.wait.until(EC.element_to_be_clickable(self.click_share)).click()
+        print("Clicked on Share Link ")
+
+        copy_btn = self.wait.until(
+            EC.element_to_be_clickable(self.share_link_input)
+        )
+        copy_btn.click()
+
+        time.sleep(3)  # let clipboard update
+        share_link = pyperclip.paste()
+
+        print("Share link:", share_link)
         self.driver.find_element(*self.proceed_to_cart).click()
-
-
 
