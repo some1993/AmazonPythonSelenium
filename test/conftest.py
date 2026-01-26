@@ -10,12 +10,21 @@ from selenium.webdriver import ActionChains
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
+from pageObjects.login import LoginPage
+
 
 def pytest_addoption(parser):
     parser.addoption(
         "--browser_name", action="store", default="chrome", help="browser selection"
     )
 
+@pytest.fixture
+def logged_in_user(browserInstance):
+    login = LoginPage(browserInstance)
+    status = login.login("g.sheakher@gmail.com", "Somearti@1993")
+
+    assert status == "LOGIN_SUCCESS"
+    return browserInstance
 
 @pytest.fixture(scope="function")
 def browserInstance(request):
