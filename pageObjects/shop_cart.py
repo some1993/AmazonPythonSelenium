@@ -13,9 +13,6 @@ class ShopCartPage:
         self.get_no_items = (By.XPATH, "//span[@data-a-selector='inner-value']")
         self.decrease_quantity = (By.XPATH, "//button[@aria-label='Decrease quantity by one']")
 
-        self.colour = (By.XPATH, "//span[normalize-space()='Cosmic Orange']")
-        self.size = (By.XPATH, "//span[normalize-space()='256 GB']")
-
         self.click_share = (By.XPATH, "//a[normalize-space()='Share']")
         self.share_link_input = (By.XPATH, "//input[@aria-label='Copy Link']")
         # self.close_sharePopUp = (By.XPATH, "//button[@aria-label='Close']")
@@ -36,8 +33,6 @@ class ShopCartPage:
             decrease_btn.click()
 
     def get_item_details(self):
-        print("Colour:", self.wait.until(EC.visibility_of_element_located(self.colour)).text)
-        print("Size:", self.wait.until(EC.visibility_of_element_located(self.size)).text)
 
         self.wait.until(EC.element_to_be_clickable(self.click_share)).click()
         print("Clicked on Share Link ")

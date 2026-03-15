@@ -1,7 +1,6 @@
 import allure
 from pageObjects.add_to_cart import AddToCart
 from pageObjects.search_product_page import SearchProductPage
-from pageObjects.shop_cart import ShopCartPage
 
 @allure.feature("Cart")
 class TestAddToCart:

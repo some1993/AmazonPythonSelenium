@@ -12,7 +12,7 @@ class SearchProductPage:
 
         self.search_field = (By.ID, "twotabsearchtextbox")
         self.search_btn = (By.ID, "nav-search-submit-button")
-        self.first_product = (By.XPATH, "//a[@class='a-link-normal s-line-clamp-2 s-line-clamp-3-for-col-12 s-link-style a-text-normal']")
+        self.first_product = (By.XPATH, "//a[@class='a-link-normal s-line-clamp-2 puis-line-clamp-3-for-col-4-and-8 s-link-style a-text-normal']//h2[@aria-label='Sponsored Ad - iPhone 17 Pro 256 GB: 15.93 cm (6.3″) Display with Promotion up to 120Hz, A19 Pro Chip, Breakthrough Battery Life, Pro Fusion Camera System with Center Stage Front Camera; Deep Blue']//span[contains(text(),'iPhone 17 Pro 256 GB: 15.93 cm (6.3″) Display with')]")
 
     def search_product(self, product):
         self.wait.until(
