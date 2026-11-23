@@ -1,1 +1,21 @@
+name: Hello World Test
 
+on:
+  workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
+
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
+      - name: Print Hello World
+        run: echo "Hello, World!"
+
+      - name: Multi-line test command
+        run: |
+          echo "Testing environment variables..."
+          echo "Triggered by: ${{ github.actor }}"
+          echo "Repository: ${{ github.repository }}"
